@@ -1,5 +1,5 @@
 
-n.n.n / 2013-09-03 
+0.1.0 / 2013-09-03 
 ==================
 
- * Initial commit
+ * Initial implementation
