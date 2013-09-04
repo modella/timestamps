@@ -1,0 +1,11 @@
+{
+  "name": "modella-timestamps",
+  "repo": "modella/timestamps",
+  "description": "CreatedAt and UpdatedAt for Modella",
+  "version": "0.1.0",
+  "keywords": ["modella", "timestamps"],
+  "license": "MIT",
+  "scripts": [
+    "index.js"
+  ]
+}
