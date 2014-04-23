@@ -2,7 +2,7 @@
   "name": "modella-timestamps",
   "repo": "modella/timestamps",
   "description": "CreatedAt and UpdatedAt for Modella",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "keywords": ["modella", "timestamps"],
   "license": "MIT",
   "scripts": [

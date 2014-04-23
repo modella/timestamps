@@ -1,15 +1,30 @@
 module.exports = timestamps;
 
 function timestamps(createdAtField, updatedAtField) {
-  createdAtField = createdAtField || 'createdAt';
-  updatedAtField = updatedAtField || 'updatedAt';
-  return function(Model) {
-    Model.attr(createdAtField, { type: 'date' });
-    Model.attr(updatedAtField, { type: 'date' });
-    Model.on('saving', function(instance, done){
-      if (instance.isNew()) instance[createdAtField](new Date());
-      instance[updatedAtField](new Date());
-      if(done) done();
-    });
-  };
+  console.log(typeof createdAtField);
+  if(typeof createdAtField === 'function') {
+    return plugin('createdAt', 'updatedAt', createdAtField);
+  }
+  else {
+    createdAtField = createdAtField || 'createdAt';
+    updatedAtField = updatedAtField || 'updatedAt';
+    return plugin.bind(null, createdAtField, updatedAtField);
+  }
+}
+
+function plugin(createdAtField, updatedAtField, Model) {
+  Model.attr(createdAtField, { type: 'date' });
+  Model.attr(updatedAtField, { type: 'date' });
+
+  Model.on('saving', function(instance, done){
+    var now = new Date();
+
+    if(instance.isNew()) {
+      instance[createdAtField](now);
+    }
+
+    instance[updatedAtField](now);
+
+    if(done) done();
+  });
 }
