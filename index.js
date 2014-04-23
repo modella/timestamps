@@ -1,7 +1,6 @@
 module.exports = timestamps;
 
 function timestamps(createdAtField, updatedAtField) {
-  console.log(typeof createdAtField);
   if(typeof createdAtField === 'function') {
     return plugin('createdAt', 'updatedAt', createdAtField);
   }
