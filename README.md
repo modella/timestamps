@@ -1,15 +1,18 @@
-#modella-timestamps
+# modella-timestamps
 
-Adds `createdAt` and `updatedAt` to the given model using the fields specified.
-
+Adds `createdAt` and `updatedAt` fields to the given model using the fields specified and updates them autoamtically.
 
 ## Usage Example
 
-    var User = require('modella')('User'),
-        timestamps = require('modella-timestamps');
+```javascript
+var modella    = require('modella');
+var timestamps = require('modella-timestamps');
 
-    // By default will use createdAt and updatedAt
-    User.use(timestamps());
+var User = modella('User');
 
-    // Specifying Custom Fields instead
-    User.use(timestamps('created_at', 'updated_at'));
+// Use the default createdAt and updatedAt field names:
+User.use(timestamps);
+
+// Specify custom field names:
+User.use(timestamps('born_at', 'changed_at'));
+```
