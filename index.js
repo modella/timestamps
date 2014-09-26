@@ -24,6 +24,13 @@ function plugin(createdAtField, updatedAtField, Model) {
 
     instance[updatedAtField](now);
 
+    var set;
+    if ('string' === typeof instance.get(createdAtField)) {
+      set = {};
+      set[createdAtField] = new Date(instance.get(createdAtField));
+      instance.set(set);
+    }
+
     if(done) done();
   });
 
